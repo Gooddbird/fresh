@@ -1,7 +1,7 @@
-package net.zixue.dao;
+package com.lzy.dao;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import net.zixue.bean.User;
+import com.lzy.bean.User;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 

@@ -1,12 +1,11 @@
-package net.zixue.web;
+package com.lzy.web;
 
-import net.zixue.bean.User;
-import net.zixue.service.UserService;
+import com.lzy.bean.User;
+import com.lzy.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -17,18 +16,6 @@ import java.sql.SQLException;
  */
 @WebServlet(name = "UserServlet",urlPatterns = "/user")
 public class UserServlet extends BaseServlet {
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        doGet(request,response);
-//    }
-//
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String method = request.getParameter("method");
-//        if ("login".equals(method)){
-//            login(request,response);
-//        }else if("register".equals(method)){
-//            register(request,response);
-//        }
-//    }
 
     public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");

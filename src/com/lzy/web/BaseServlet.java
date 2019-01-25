@@ -1,4 +1,4 @@
-package net.zixue.web;
+package com.lzy.web;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,7 +1,7 @@
-package net.zixue.service;
+package com.lzy.service;
 
-import net.zixue.bean.User;
-import net.zixue.dao.UserDao;
+import com.lzy.dao.UserDao;
+import com.lzy.bean.User;
 
 import java.sql.SQLException;
 

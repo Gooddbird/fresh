@@ -1,7 +1,7 @@
-package net.zixue.dao;
+package com.lzy.dao;
 
+import com.lzy.bean.Category;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import net.zixue.bean.Category;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
@@ -49,34 +49,6 @@ public class CategoryDao {
         List<Category> categoryList = queryRunner.query(sql, new BeanListHandler<Category>(Category.class),startPosition,currentCount);
         return categoryList;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    /**
-//     * @method:queryCount 查询数据总数
-//     * @date: 2017/7/8
-//     * @params:[]
-//     * @return: int
-//     */
-//    public int queryCount() throws SQLException {
-//        ComboPooledDataSource dataSource=new ComboPooledDataSource();
-//        QueryRunner queryRunner=new QueryRunner(dataSource);
-//        String sql="select count(*) from category";
-//        Long query = queryRunner.query(sql, new ScalarHandler<>());
-//        return query.intValue();
-//    }
 
     /**
      * @method:updateCategory

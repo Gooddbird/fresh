@@ -1,4 +1,4 @@
-package net.zixue.bean;
+package com.lzy.bean;
 
 import java.util.List;
 

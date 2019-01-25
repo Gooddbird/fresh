@@ -1,21 +1,19 @@
-package net.zixue.web;
+package com.lzy.web;
 
-import net.zixue.bean.Category;
+import com.lzy.bean.Category;
+import com.lzy.bean.Page;
+import com.lzy.service.CategoryService;
 
-import net.zixue.bean.Page;
-import net.zixue.service.CategoryService;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 /**

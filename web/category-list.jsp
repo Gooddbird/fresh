@@ -50,34 +50,31 @@
 								<tr>
 									<th>编号</th>
 									<th>姓名</th>
-									<th>添加时间</th>
 									<th>性别</th>
-									<th>人脸信息</th>
+									<th>邮箱</th>
+
 									<th width="120">操作</th>
 								</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${page.list}" var="category">
+							<c:forEach items="${page.list}" var="user">
 								<tr>
-									<th>${category.c_id}</th>
-									<td>${category.c_name}</td>
-									<td>${category.createtime}</td>
-									<c:if test="${category.type==0}" >
+									<th>${user.id}</th>
+									<td>${user.name}</td>
+									<c:if test="${user.type==0}" >
 										<td>男</td>
 									</c:if>
-									<c:if test="${category.type==1}" >
+									<c:if test="${user.type==1}" >
 										<td>女</td>
 									</c:if>
-									<c:if test="${category.type==2}" >
-										<td>海鲜水产</td>
-									</c:if>
+									<td>${user.email}</td>
 									<td>${null}</td>
 
 
 									<td>
 										<%--<a href="">详情</a>--%>
-										<a href="${pageContext.request.contextPath}/category?method=deleteCategory&c_id=${category.c_id}">删除</a>
-										<a href="${pageContext.request.contextPath}/category-update.jsp?c_id=${category.c_id}&c_name=${category.c_name}&type=${category.type}&place=${category.place}">修改</a>
+										<a href="${pageContext.request.contextPath}/category?method=deleteCategory&c_id=${user.c_id}">删除</a>
+										<a href="${pageContext.request.contextPath}/category-update.jsp?c_id=${user.c_id}&c_name=${category.c_name}&type=${category.type}&place=${category.place}">修改</a>
 									</td>
 								</tr>
 							</c:forEach>

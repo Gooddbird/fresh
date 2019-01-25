@@ -1,9 +1,9 @@
-package net.zixue.service;
+package com.lzy.service;
 
-import net.zixue.bean.Category;
+import com.lzy.bean.Category;
 
-import net.zixue.bean.Page;
-import net.zixue.dao.CategoryDao;
+import com.lzy.bean.Page;
+import com.lzy.dao.CategoryDao;
 
 import java.sql.SQLException;
 import java.util.List;

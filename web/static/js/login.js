@@ -61,18 +61,18 @@ $(document).ready(function() {
 		$.ajax({
 			type: reMethod,
 			url: "doAction.php?act=checkUser",
-			data: "username=" + $("#user").val(),
+			data: "adminname=" + $("#admin").val(),
 			dataType: 'html',
 			success: function(result) {
 				if (result==1) {
-					$('#user').focus().css({
+					$('#admin').focus().css({
 						border: "1px solid red",
 						boxShadow: "0 0 2px red"
 					});
-					$("#userCue").html('用户名已存在!');
+					$("#adminCue").html('用户名已存在!');
 					return false;
 				} else {
-					$('#user').css({
+					$('#admin').css({
 						border: "1px solid #D7D7D7",
 						boxShadow: "none"
 					});
@@ -82,30 +82,30 @@ $(document).ready(function() {
 	});
 	
 	$('#reg').click(function() {
-		if ($('#user').val() == "") {
-			$('#user').focus().css({
+		if ($('#admin').val() == "") {
+			$('#admin').focus().css({
 				border: "1px solid red",
 				boxShadow: "0 0 2px red"
 			});
-			$('#userCue').html("<font color='red'><b>×用户名不能为空</b></font>");
+			$('#adminCue').html("<font color='red'><b>×用户名不能为空</b></font>");
 			return false;
 		}
-		if ($('#user').val().length < 4 || $('#user').val().length > 16) {
-			$('#user').focus().css({
+		if ($('#admin').val().length < 4 || $('#admin').val().length > 16) {
+			$('#admin').focus().css({
 				border: "1px solid red",
 				boxShadow: "0 0 2px red"
 			});
-			$('#userCue').html("<font color='red'><b>×用户名位4-16字符</b></font>");
+			$('#adminCue').html("<font color='red'><b>×用户名位4-16字符</b></font>");
 			return false;
 		}
 		if ($('#passwd').val().length < pwdmin) {
 			$('#passwd').focus();
-			$('#userCue').html("<font color='red'><b>×密码不能小于" + pwdmin + "位</b></font>");
+			$('#adminCue').html("<font color='red'><b>×密码不能小于" + pwdmin + "位</b></font>");
 			return false;
 		}
 		if ($('#passwd2').val() != $('#passwd').val()) {
 			$('#passwd2').focus();
-			$('#userCue').html("<font color='red'><b>×两次密码不一致！</b></font>");
+			$('#adminCue').html("<font color='red'><b>×两次密码不一致！</b></font>");
 			return false;
 		}
 		var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/; 
@@ -114,13 +114,13 @@ $(document).ready(function() {
 				border: "1px solid red",
 				boxShadow: "0 0 2px red"
 			});
-			$('#userCue').html("<font color='red'><b>×email格式不正确</b></font>");return false;
+			$('#adminCue').html("<font color='red'><b>×email格式不正确</b></font>");return false;
 		} else {
 			$('#email').css({
 				border: "1px solid #D7D7D7",
 				boxShadow: "none"
 			});
 		}
-		$('#regUser').submit();
+		$('#regAdmin').submit();
 	});
 });

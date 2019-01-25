@@ -1,7 +1,7 @@
-package net.zixue.web;
+package com.lzy.web;
 
-import net.zixue.bean.User;
-import net.zixue.service.UserService;
+import com.lzy.bean.User;
+import com.lzy.service.UserService;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;

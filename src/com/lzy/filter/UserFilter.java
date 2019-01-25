@@ -1,6 +1,6 @@
-package net.zixue.filter;
+package com.lzy.filter;
 
-import net.zixue.bean.User;
+import com.lzy.bean.User;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

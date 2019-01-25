@@ -3,7 +3,7 @@
     <!-- 默认配置，如果没有指定则使用这个配置 -->
     <default-config>
         <property name="driverClass">com.mysql.cj.jdbc.Driver</property>
-        <property name="jdbcUrl">jdbc:mysql://localhost:3306/fresh?serverTimezone=GMT%2B8</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/meet?serverTimezone=GMT%2B8</property>
         <property name="user">root</property>
         <property name="password">hd990804</property>
         <!-- 初始化池大小 -->
@@ -20,7 +20,7 @@
     <!-- 命名的配置 -->
     <named-config name="51zixue"><!--这里是设置配置文件的名字-->
         <property name="driverClass">com.mysql.cj.jdbc.Driver</property>
-        <property name="jdbcUrl">jdbc:mysql://localhost:3306/fresh</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/meet</property>
         <property name="user">root</property><!--mysql的登陆名-->
         <property name="password">hd990804</property><!--如果没密码就可以设置成<property name="password"></property>-->
         <property name="acquireIncrement">5</property><!-- 如果池中数据连接不够时一次增长多少个 -->

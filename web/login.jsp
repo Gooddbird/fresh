@@ -34,7 +34,7 @@
         <div class="web_login" id="web_login">
             <div class="login-box">
                 <div class="login_form">
-                    <form action="user"
+                    <form action="admin"
                           accept-charset="utf-8" id="login_form" class="loginForm"
                           method="post">
                         <input type="hidden" name="method" value="login"/>
@@ -43,14 +43,14 @@
                         <div class="uinArea" id="uinArea">
                             <label class="input-tips" for="u">帐号：</label>
                             <div class="inputOuter" id="uArea">
-                                <input type="text" id="u" name="name" value="${cookie.name.value}" class="inputstyle"/>
+                                <input type="text" id="u" name="a_name" value="${cookie.name.value}" class="inputstyle"/>
                             </div>
                         </div>
                         <div class="pwdArea" id="pwdArea">
                             <label class="input-tips" for="p">密码：</label>
                             <div class="inputOuter" id="pArea">
 
-                                <input type="password" id="p" name="password" value="${cookie.password.value}" class="inputstyle"/>
+                                <input type="password" id="p" name="a_password" value="${cookie.password.value}" class="inputstyle"/>
                             </div>
                         </div>
 

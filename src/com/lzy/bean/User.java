@@ -1,14 +1,14 @@
-package net.zixue.bean;
+package com.lzy.bean;
 
-/**
- * Created by Administrator on 2017/7/6.
- */
+
 public class User {
 
     private int id;
     private String name;
     private String password;
     private String email;
+    private int sex;
+    private String face;
 
     public int getId() {
         return id;
@@ -40,5 +40,20 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public String getFace() {
+        return face;
+    }
+
+    public void setFace(String face) {
+        this.face = face;
     }
 }
