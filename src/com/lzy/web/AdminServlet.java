@@ -43,9 +43,6 @@ public class AdminServlet extends BaseServlet {
             }
             request.getSession().setAttribute("admin",admin);
             //登录成功跳转生鲜种类列表界面
-            response.setContentType("text/html;charset=utf-8");
-            response.getWriter().write("登录成功");
-            System.out.println("1");
             response.sendRedirect(request.getContextPath()+"/room?method=getRoomList&currentPage=1&currentCount=10");
         }else {
             //登录失败提示

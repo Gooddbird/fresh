@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: hhhhh
-  Date: 2019/1/25
-  Time: 16:09
+  Date: 2019/1/26
+  Time: 13:30
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -36,8 +36,8 @@
             <!-- 左侧内容 -->
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="${pageContext.request.contextPath}/room?method=getRoomList&currentPage=1&currentCount=10" class="list-group-item text-center ">会议室列表</a>
-                    <a href="${pageContext.request.contextPath}/room-add.jsp" class="list-group-item text-center active">新增会议室</a>
+                    <a href="${pageContext.request.contextPath}/user?method=getUserList&currentPage=1&currentCount=10" class="list-group-item text-center ">员工列表</a>
+                    <a href="${pageContext.request.contextPath}/user-add.jsp" class="list-group-item text-center active">新增员工</a>
                 </div>
             </div>
             <!-- 右侧内容 -->
@@ -45,9 +45,11 @@
                 <!-- 错误提示 -->
                 <div style="display: none" class="alert alert-danger" role="alert">
                     <ul>
-                        <li>会议室不能为空</li>
-                        <li>容量只能为整数</li>
-                        <li>请选择当前状态</li>
+                        <li>姓名不能为空</li>
+                        <li>密码不能为空</li>
+                        <li>请选择性别</li>
+                        <li>请上传人脸信息</li>
+                        <li>邮箱不能为空</li>
                     </ul>
                 </div>
                 <div id="sucess-info" style="display: none" class="alert alert-success alert-dismissible" role="alert">
@@ -63,43 +65,58 @@
                 </div>
                 <!-- 自定义内容 -->
                 <div class="panel panel-default">
-                    <div class="panel-heading">新增会议室</div>
+                    <div class="panel-heading">新增员工</div>
                     <div class="panel-body">
-                        <form action="room" method="post" class="form-horizontal" role="form">
+                        <form action="user" method="post" class="form-horizontal" role="form">
                             <div class="form-group">
-                                <input type="hidden" name="method" value="addRoom">
-                                <label class="col-sm-2 control-label">会议室</label>
+                                <input type="hidden" name="method" value="addUser">
+                                <label class="col-sm-2 control-label">姓名</label>
                                 <div class="col-sm-5">
-                                    <input type="text" name="r_name" class="form-control">
+                                    <input type="text" name="name" class="form-control">
                                 </div>
                                 <div class="col-sm-5">
-                                    <p class="form-control-static text-danger">会议室不能为空</p>
+                                    <p class="form-control-static text-danger">姓名不能为空</p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">容量</label>
+                                <label class="col-sm-2 control-label">密码</label>
                                 <div class="col-sm-5">
-                                    <input type="text" name="content" class="form-control" placeholder="容量">
+                                    <input type="password" name="password" class="form-control" placeholder="密码">
                                 </div>
                                 <div class="col-sm-5">
-                                    <p class="form-control-static text-danger">容量不能为空</p>
+                                    <p class="form-control-static text-danger">密码不能为空</p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">当前状态</label>
+                                <label class="col-sm-2 control-label">性别</label>
                                 <div class="col-sm-5">
                                     <label class="radio-inline">
-                                        <input type="radio" name="station" value="0">空闲
+                                        <input type="radio" name="sex" value="0">男
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="station" value="1">预定中
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="station" value="2">使用中
+                                        <input type="radio" name="sex" value="1">女
                                     </label>
                                 </div>
                                 <div class="col-sm-5">
-                                    <p class="form-control-static text-danger">请选择当前状态</p>
+                                    <p class="form-control-static text-danger">请选择性别</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">人脸信息</label>
+                                <div class="col-sm-5">
+                                    <input type="file" name="face" class="form-control" placeholder="人脸信息">
+                                </div>
+                                <div class="col-sm-5">
+                                    <p class="form-control-static text-danger">人脸信息不能为空</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">邮箱</label>
+                                <div class="col-sm-5">
+                                    <input type="email" name="email" class="form-control" placeholder="邮箱">
+                                </div>
+                                <div class="col-sm-5">
+                                    <p class="form-control-static text-danger">邮箱不能为空</p>
                                 </div>
                             </div>
                             <div class="form-group">

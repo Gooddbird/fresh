@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: hhhhh
-  Date: 2019/1/25
-  Time: 16:07
+  Date: 2019/1/26
+  Time: 13:29
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -32,9 +32,9 @@
             <!-- 左侧内容 -->
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="${pageContext.request.contextPath}/room?method=getRoomList&currentPage=1&currentCount=10" class="list-group-item text-center active">会议室列表</a>
+                    <a href="${pageContext.request.contextPath}/room?method=getRoomList&currentPage=1&currentCount=10" class="list-group-item text-center ">会议室列表</a>
                     <a href="${pageContext.request.contextPath}/room-add.jsp" class="list-group-item text-center ">新增会议室</a>
-                    <a href="${pageContext.request.contextPath}/user?method=getUserList&currentPage=1&currentCount=10" class="list-group-item text-center ">员工列表</a>
+                    <a href="${pageContext.request.contextPath}/user?method=getUserList&currentPage=1&currentCount=10" class="list-group-item text-center active">员工列表</a>
                     <a href="${pageContext.request.contextPath}/user-add.jsp" class="list-group-item text-center ">新增员工</a>
                 </div>
             </div>
@@ -52,42 +52,39 @@
                 </div>
                 <!-- 自定义内容 -->
                 <div class="panel panel-default">
-                    <div class="panel-heading">会议室列表</div>
+                    <div class="panel-heading">员工列表</div>
                     <div class="panel-body">
                         <table class="table table-striped table-responsive table-hover">
                             <thead>
                             <tr>
                                 <th>编号</th>
-                                <th>会议室</th>
-                                <th>容量</th>
-                                <th>状态</th>
-
+                                <th>姓名</th>
+                                <th>性别</th>
+                                <th>邮箱</th>
+                                <th>人脸</th>
                                 <th width="120">操作</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${page.list}" var="room">
+                            <c:forEach items="${page.list}" var="user">
                                 <tr>
-                                    <th>${room.r_id}</th>
-                                    <td>${room.r_name}</td>
-                                    <td>${room.content}</td>
-                                    <c:if test="${room.station==0}" >
-                                        <td>空闲</td>
+                                    <th>${user.id}</th>
+                                    <td>${user.name}</td>
+                                    <c:if test="${user.sex==0}" >
+                                        <td>男</td>
                                     </c:if>
-                                    <c:if test="${room.station==1}" >
-                                        <td>预定中</td>
+                                    <c:if test="${user.sex==1}" >
+                                        <td>女</td>
                                     </c:if>
-                                    <c:if test="${room.station==2}" >
-                                        <td>使用中</td>
-                                    </c:if>
+                                    <td>${user.email}</td>
 
                                     <td>${null}</td>
 
 
                                     <td>
                                             <%--<a href="">详情</a>--%>
-                                        <a href="${pageContext.request.contextPath}/room?method=deleteRoom&r_id=${room.r_id}">删除</a>
-                                        <a href="${pageContext.request.contextPath}/room-update.jsp?r_id=${room.r_id}&r_name=${room.r_name}&content=${room.content}&station=${room.station}">修改</a>
+                                        <a href="${pageContext.request.contextPath}/user?method=deleteUser&id=${user.id}">删除</a>
+                                        <a href="${pageContext.request.contextPath}/user-update.jsp?id=${user.id}&name=${user.name}&password=${user.password}&sex=${user.sex}&face=${user.face}&email=${user.email}">修改</a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -102,7 +99,7 @@
                     <ul class="pagination pull-right">
                         <li  class="previous"><a href="#">&laquo;</a></li>
                         <c:forEach begin="1" end="${page.totalPage}" var="Page">
-                            <li><a href="${pageContext.request.contextPath}/room?method=getRoomList&roomPage=${Page}&currentCount=10">${Page}</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user?method=getUserList&userPage=${Page}&currentCount=10">${Page}</a></li>
                         </c:forEach>
                         <li><a href="#">&raquo;</a></li>
                     </ul>

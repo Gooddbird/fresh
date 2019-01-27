@@ -1,19 +1,19 @@
 package com.lzy.web;
 
+import com.lzy.bean.Page;
 import com.lzy.bean.User;
 import com.lzy.service.UserService;
-
+import org.apache.commons.beanutils.BeanUtils;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.Map;
 
-/**
- * Created by Administrator on 2017/7/7.
- */
 @WebServlet(name = "UserServlet",urlPatterns = "/user")
 public class UserServlet extends BaseServlet {
 
@@ -45,7 +45,7 @@ public class UserServlet extends BaseServlet {
 
             }
               request.getSession().setAttribute("user",user);
-            //登录成功跳转生鲜种类列表界面
+            //登录成功跳转
 
             response.sendRedirect(request.getContextPath()+"/category?method=getCategoryList&currentPage=1&currentCount=10");
         }else {
@@ -56,16 +56,11 @@ public class UserServlet extends BaseServlet {
         }
 
     }
-    public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String id = request.getParameter("id");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
+    public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, InvocationTargetException, IllegalAccessException {
+        Map<String, String[]> parameterMap = request.getParameterMap();
         User user=new User();
-
-
+        BeanUtils.populate(user,parameterMap);
         UserService userService=new UserService();
-
         boolean register = userService.register(user);
         if (register) {
             response.sendRedirect(request.getContextPath()+"login.jsp");
@@ -73,6 +68,113 @@ public class UserServlet extends BaseServlet {
             response.setContentType("text/html;charset=utf-8");
             response.getWriter().write("注册失败");
         }
+    }
+    public void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        try {
+            // 获取参数 通过BeanUtils封装实体类
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            User user=new User();
+            BeanUtils.populate(user,parameterMap);
+            UserService userService=new UserService();
+            boolean b = userService.addUser(user);
+            if (b){
+                //添加成功
+                response.setStatus(201);
+                request.getRequestDispatcher("/user-add.jsp").forward(request,response);
+            }else {
+                // 添加失败
+                response.setStatus(600);
+                request.getRequestDispatcher("/user-add.jsp").forward(request,response);
+            }
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void getUserList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 1 调用service中的查询方法
+        try {
+            int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+            int currentCount = Integer.parseInt(request.getParameter("currentCount"));
+            // 给分页数据设置默认值
+            if (currentCount==0){
+                currentCount=10;
+            }
+            if (currentPage==0){
+                currentPage=1;
+            }
+            UserService service=new UserService();
+            Page page = service.findPageUser(currentPage, currentCount);
+            if (page!=null) {
+                request.setAttribute("page",page);
+                request.getRequestDispatcher("/user-list.jsp").forward(request,response);
+            }else {
+                request.getRequestDispatcher("/user-list.jsp").forward(request,response);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            // 1 调用service中的查询方法
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            User user=new User();
+            BeanUtils.populate(user,parameterMap);
+            UserService service=new UserService();
+            boolean updateUser = service.updateUser(user);
+
+            if (updateUser){
+                response.sendRedirect(request.getContextPath()+"/user?method=getRoomList&currentPage=1&currentCount=10");
+            }else {
+                // 失败了直接提示
+                response.setContentType("text/html;charset=utf-8");
+                response.getWriter().write("修改失败");
+            }
+
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            // 1 调用service中的查询方法
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            User user=new User();
+            BeanUtils.populate(user,parameterMap);
+            UserService service=new UserService();
+            boolean deleteUser = service.deleteUser(user);
+
+            if (deleteUser){
+
+                response.sendRedirect(request.getContextPath()+"/user?method=getRoomList&currentPage=1&currentCount=10");
+
+            }else {
+                // 失败了直接提示
+                response.setContentType("text/html;charset=utf-8");
+                response.getWriter().write("删除失败");
+            }
+
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 }

@@ -69,6 +69,7 @@
         </div>
         <!--登录end-->
     </div>
+
     <!--注册-->
     <div class="qlogin" id="qlogin" style="display: none;">
         <div class="web_login">

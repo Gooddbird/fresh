@@ -33,9 +33,8 @@
             <!-- 左侧内容 -->
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="${pageContext.request.contextPath}/room" class="list-group-item text-center ">会议室列表</a>
-                    <a href="${pageContext.request.contextPath}/room-add.jsp" class="list-group-item text-center ">新增会议室</a>
-                    <a href="${pageContext.request.contextPath}/layout-update.jsp" class="list-group-item text-center active">修改会议室信息</a>
+                    <a href="${pageContext.request.contextPath}/room-list.jsp" class="list-group-item text-center ">会议室列表</a>
+                    <a href="${pageContext.request.contextPath}/room-update.jsp" class="list-group-item text-center active">修改会议室信息</a>
 
                 </div>
             </div>
