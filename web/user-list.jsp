@@ -78,7 +78,9 @@
                                     </c:if>
                                     <td>${user.email}</td>
 
-                                    <td>${null}</td>
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/user?method=getUserFace&id=${user.id}">查看人脸信息</a>
+                                    </td>
 
 
                                     <td>

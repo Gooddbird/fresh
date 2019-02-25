@@ -61,7 +61,6 @@
                                 <th>会议室</th>
                                 <th>容量</th>
                                 <th>状态</th>
-
                                 <th width="120">操作</th>
                             </tr>
                             </thead>

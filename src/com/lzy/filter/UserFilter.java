@@ -14,9 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * Created by Administrator on 2017/7/11.
- */
 @WebFilter(filterName = "UserFilter",urlPatterns = "/category")
 public class UserFilter implements Filter {
     public void destroy() {

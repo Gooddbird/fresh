@@ -1,21 +1,17 @@
 package com.lzy.web;
 
-import com.lzy.bean.Category;
 import com.lzy.bean.Page;
 import com.lzy.bean.Room;
-import com.lzy.service.CategoryService;
 import com.lzy.service.RoomService;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Map;
 
 @WebServlet(name = "RoomServlet",urlPatterns = "/room")

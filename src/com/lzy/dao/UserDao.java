@@ -40,7 +40,6 @@ public class UserDao {
     }
     /**
      * @method:register 用户注册
-     * @date: 2017/7/7
      * @params:[name, password, email]
      * @return: boolean
      */
@@ -139,4 +138,22 @@ public class UserDao {
             return false;
         }
     }
+    public boolean getUserFace(User user) throws SQLException {
+        try {
+            ComboPooledDataSource dataSource = new ComboPooledDataSource();
+            QueryRunner queryRunner = new QueryRunner(dataSource);
+            String sql = "select face from user where id=?";
+            user = queryRunner.query(sql, new BeanHandler<User>(User.class), user.getId());
+            //如果没有查询到数据 说明这个用户名没有注册过
+            if (user == null) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

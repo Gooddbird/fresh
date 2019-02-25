@@ -63,7 +63,7 @@ public class UserServlet extends BaseServlet {
         UserService userService=new UserService();
         boolean register = userService.register(user);
         if (register) {
-            response.sendRedirect(request.getContextPath()+"login.jsp");
+            response.sendRedirect(request.getContextPath()+"userLogin.jsp");
         }else {
             response.setContentType("text/html;charset=utf-8");
             response.getWriter().write("注册失败");
@@ -173,7 +173,32 @@ public class UserServlet extends BaseServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void getUserFace(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        try {
+            // 1 调用service中的查询方法
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            User user=new User();
+            BeanUtils.populate(user,parameterMap);
+            UserService service=new UserService();
+            boolean getUserFace = service.getUserFace(user);
 
+            if (getUserFace){
+                response.sendRedirect(request.getContextPath()+"/user?method=getRoomList&currentPage=1&currentCount=10");
+            }else {
+                // 失败了直接提示
+                response.setContentType("text/html;charset=utf-8");
+                response.getWriter().write("失败");
+            }
+
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 

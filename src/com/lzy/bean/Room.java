@@ -37,7 +37,4 @@ public class Room {
     public void setStation(int station) {
         this.station = station;
     }
-
-
-
 }

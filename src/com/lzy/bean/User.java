@@ -1,6 +1,5 @@
 package com.lzy.bean;
 
-
 public class User {
 
     private int id;

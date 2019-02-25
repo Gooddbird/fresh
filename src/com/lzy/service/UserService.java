@@ -85,4 +85,10 @@ public class UserService {
         boolean deleteUser = dao.deleteUser(user);
         return deleteUser;
     }
+
+    public boolean getUserFace(User user) throws SQLException {
+        UserDao dao=new UserDao();
+        boolean getUserFace = dao.getUserFace(user);
+        return getUserFace;
+    }
 }

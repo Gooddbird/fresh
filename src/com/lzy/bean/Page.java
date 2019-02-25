@@ -2,9 +2,7 @@ package com.lzy.bean;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2017/7/10.
- */
+
 public class Page<T> {
     private int totalPage;//总页数
     private int currentPage;// 当前页数
