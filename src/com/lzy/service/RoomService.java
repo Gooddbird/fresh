@@ -53,4 +53,10 @@ public class RoomService {
         boolean deleteRoom = dao.deleteRoom(room);
         return deleteRoom;
     }
+
+    public boolean reserveRoom(Room room) throws SQLException {
+        RoomDao roomDao=new RoomDao();
+        boolean reserveRoom=roomDao.reserveRoom(room);
+        return reserveRoom;
+    }
 }

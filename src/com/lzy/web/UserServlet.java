@@ -18,14 +18,14 @@ import java.util.Map;
 public class UserServlet extends BaseServlet {
 
     public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
+        String u_name = request.getParameter("u_name");
+        String u_password = request.getParameter("u_password");
 
         UserService userService=new UserService();
         User user=null;
         try {
             //调用service中登录方法
-            user = userService.login(name, password);
+            user = userService.login(u_name, u_password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -34,8 +34,8 @@ public class UserServlet extends BaseServlet {
             String remember = request.getParameter("remember");
             if (remember!=null&&remember.equals("yes")){
                 // 将用户名和密码加入到cookie中
-                Cookie nameCookie = new Cookie("name", name);
-                Cookie passwordCookie = new Cookie("password", password);
+                Cookie nameCookie = new Cookie("u_name", u_name);
+                Cookie passwordCookie = new Cookie("u_password", u_password);
                 //设置cookie的有效期 防止销毁
                 nameCookie.setMaxAge(60*10);
                 passwordCookie.setMaxAge(60*10);
@@ -44,10 +44,9 @@ public class UserServlet extends BaseServlet {
                 response.addCookie(passwordCookie);
 
             }
-              request.getSession().setAttribute("user",user);
+            request.getSession().setAttribute("user",user);
             //登录成功跳转
-
-            response.sendRedirect(request.getContextPath()+"/category?method=getCategoryList&currentPage=1&currentCount=10");
+            response.sendRedirect(request.getContextPath()+"/room?method=getReserveRoomList&currentPage=1&currentCount=10");
         }else {
             //登录失败提示
             response.setContentType("text/html;charset=utf-8");

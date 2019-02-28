@@ -48,6 +48,7 @@ public class RoomServlet extends BaseServlet {
         try {
             int currentPage = Integer.parseInt(request.getParameter("currentPage"));
             int currentCount = Integer.parseInt(request.getParameter("currentCount"));
+
             // 给分页数据设置默认值
             if (currentCount==0){
                 currentCount=10;
@@ -59,9 +60,36 @@ public class RoomServlet extends BaseServlet {
             Page page = service.findPageRoom(currentPage, currentCount);
             if (page!=null) {
                 request.setAttribute("page",page);
-                request.getRequestDispatcher("/room-list.jsp").forward(request,response);
+
+                    request.getRequestDispatcher("/room-list.jsp").forward(request,response);
+
             }else {
-                request.getRequestDispatcher("/room-list.jsp").forward(request,response);
+                    request.getRequestDispatcher("/room-list.jsp").forward(request,response);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void getReserveRoomList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 1 调用service中的查询方法
+        try {
+            int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+            int currentCount = Integer.parseInt(request.getParameter("currentCount"));
+
+            // 给分页数据设置默认值
+            if (currentCount==0){
+                currentCount=10;
+            }
+            if (currentPage==0){
+                currentPage=1;
+            }
+            RoomService service=new RoomService();
+            Page page = service.findPageRoom(currentPage, currentCount);
+            if (page!=null) {
+                request.setAttribute("page",page);
+                request.getRequestDispatcher("/reserve.jsp").forward(request,response);
+            }else {
+                request.getRequestDispatcher("/reserve.jsp").forward(request,response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -122,7 +150,27 @@ public class RoomServlet extends BaseServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void reserveRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
+        try {
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            Room room=new Room();
+            BeanUtils.populate(room,parameterMap);
+            RoomService roomService=new RoomService();
+            boolean reserveRoom=roomService.reserveRoom(room);
+            if(reserveRoom) {
+                //预订成功后显示成功页面
+            }else{
+                //预订失败后显示失败信息
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }

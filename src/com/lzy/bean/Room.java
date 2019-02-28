@@ -5,6 +5,7 @@ public class Room {
     private String r_name;
     private int content;
     private int station;
+    private int reserver;
 
     public int getR_id() {
         return r_id;
@@ -36,5 +37,12 @@ public class Room {
 
     public void setStation(int station) {
         this.station = station;
+    }
+    public int getReserver() {
+        return reserver;
+    }
+
+    public void setReserver(int reserver) {
+        this.reserver = reserver;
     }
 }

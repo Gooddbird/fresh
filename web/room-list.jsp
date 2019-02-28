@@ -61,6 +61,7 @@
                                 <th>会议室</th>
                                 <th>容量</th>
                                 <th>状态</th>
+                                <th>预订人</th>
                                 <th width="120">操作</th>
                             </tr>
                             </thead>
@@ -79,10 +80,7 @@
                                     <c:if test="${room.station==2}" >
                                         <td>使用中</td>
                                     </c:if>
-
-                                    <td>${null}</td>
-
-
+                                    <td>${room.reserver}</td>
                                     <td>
                                             <%--<a href="">详情</a>--%>
                                         <a href="${pageContext.request.contextPath}/room?method=deleteRoom&r_id=${room.r_id}">删除</a>

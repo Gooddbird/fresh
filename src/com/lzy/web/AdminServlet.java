@@ -47,7 +47,7 @@ public class AdminServlet extends BaseServlet {
         }else {
             //登录失败提示
             response.setContentType("text/html;charset=utf-8");
-            response.getWriter().write("登录失败");
+            response.getWriter().write("1登录失败");
 
         }
 

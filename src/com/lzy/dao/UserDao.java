@@ -67,12 +67,6 @@ public class UserDao {
     }
 
 
-    /**
-     * @method:login 查询数据库
-     * @date: 2017/7/7
-     * @params:[name, password]
-     * @return: void
-     */
     public User login(String name, String password) throws SQLException {
        ComboPooledDataSource dataSource=new ComboPooledDataSource();
        QueryRunner queryRunner=new QueryRunner(dataSource);

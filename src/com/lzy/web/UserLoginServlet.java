@@ -1,8 +1,6 @@
 package com.lzy.web;
 
-import com.lzy.bean.Admin;
 import com.lzy.bean.User;
-import com.lzy.service.AdminService;
 import com.lzy.service.UserService;
 
 import javax.servlet.ServletException;

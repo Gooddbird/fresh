@@ -47,8 +47,6 @@ public class LoginServlet extends HttpServlet {
                 response.addCookie(passwordCookie);
 
             }
-            //登录成功跳转
-            //response.sendRedirect(request.getContextPath()+"/room-list.jsp");
         }else {
             //登录失败提示
             response.setContentType("text/html;charset=utf-8");

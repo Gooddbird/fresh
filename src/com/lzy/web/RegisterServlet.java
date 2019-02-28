@@ -13,26 +13,11 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
-/**
- * Created by Administrator on 2017/7/6.
- */
 @WebServlet(name = "RegisterServlet",urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /*
-        String name = request.getParameter("name");
-        String id = request.getParameter("id");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        */
         User user=new User();
         Map<String, String[]> parameterMap = request.getParameterMap();
-        /*
-        user.setId(Integer.parseInt(id));
-        user.setName(name);
-        user.setPassword(password);
-        user.setEmail(email);
-        */
         try {
             BeanUtils.populate(user,parameterMap);
         } catch (IllegalAccessException e) {

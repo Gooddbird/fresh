@@ -13,8 +13,8 @@ public class RoomDao {
     public boolean addRoom(Room room) throws SQLException {
         ComboPooledDataSource dataSource=new ComboPooledDataSource();
         QueryRunner queryRunner=new QueryRunner(dataSource);
-        String sql="insert into room values(null,?,?,?)";
-        int row=queryRunner.update(sql,room.getR_name(),room.getContent(),room.getStation());
+        String sql="insert into room values(null,?,?,?,?)";
+        int row=queryRunner.update(sql,room.getR_name(),room.getContent(),room.getStation(),room.getReserver());
         if(row>0)
         {
             return true;
@@ -48,8 +48,8 @@ public class RoomDao {
 
         ComboPooledDataSource dataSource=new ComboPooledDataSource();
         QueryRunner queryRunner=new QueryRunner(dataSource);
-        String sql="update room set r_name=?,content=?,station=? where r_id=?";
-        int row = queryRunner.update(sql, room.getR_name(), room.getContent(), room.getStation(),room.getR_id());
+        String sql="update room set r_name=?,content=?,station=?,reserver=? where r_id=?";
+        int row = queryRunner.update(sql, room.getR_name(), room.getContent(), room.getStation(),room.getReserver(),room.getR_id());
         if (row>0){
             return true;
         }else {
@@ -62,5 +62,17 @@ public class RoomDao {
         String sql="delete from room where r_id=?";
         int row = queryRunner.update(sql,room.getR_id());
         return row>0?true:false;
+    }
+
+    public boolean reserveRoom(Room room) throws SQLException  {
+        ComboPooledDataSource dataSource=new ComboPooledDataSource();
+        QueryRunner queryRunner=new QueryRunner(dataSource);
+        String sql="update room set station=?,reserver=? where r_id=?";
+        int row = queryRunner.update(sql, room.getStation(),room.getReserver(),room.getR_id());
+        if (row>0){
+            return true;
+        }else {
+            return false;
+        }
     }
 }

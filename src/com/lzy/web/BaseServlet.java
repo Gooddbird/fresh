@@ -9,9 +9,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/**
- * Created by Administrator on 2017/7/8.
- */
 @WebServlet(name = "BaseServlet")
 public class BaseServlet extends HttpServlet {
     @Override

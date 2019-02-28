@@ -7,7 +7,7 @@
     <title>Document</title>
     <script type="text/javascript" src="static/js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="static/js/login.js"></script>
-    <link href="static/css/userLogin.css" rel="sty lesheet" type="text/css"/>
+    <link href="static/css/userLogin.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <h1>
@@ -34,7 +34,7 @@
         <div class="web_login" id="web_login">
             <div class="login-box">
                 <div class="login_form">
-                    <form action="admin"
+                    <form action="user"
                           accept-charset="utf-8" id="login_form" class="loginForm"
                           method="post">
                         <input type="hidden" name="method" value="login"/>
