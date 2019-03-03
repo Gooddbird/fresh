@@ -60,6 +60,7 @@
                                 <div class="col-sm-5">
                                     <input type="text" name="reserver" value="${param.reserver}" class="form-control" placeholder="ID" >
                                 </div>
+                                <input type="hidden" name="r_id" value="${param.r_id}">
                                 <div class="col-sm-5">
                                     <p class="form-control-static text-danger">ID不能为空</p>
                                 </div>

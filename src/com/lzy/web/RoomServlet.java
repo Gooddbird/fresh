@@ -105,7 +105,7 @@ public class RoomServlet extends BaseServlet {
             boolean updateRoom = service.updateRoom(room);
 
             if (updateRoom){
-                // 修改成功后重定向到生鲜列表界面
+                // 修改成功
                 response.sendRedirect(request.getContextPath()+"/room?method=getRoomList&currentPage=1&currentCount=10");
 
             }else {
@@ -161,8 +161,10 @@ public class RoomServlet extends BaseServlet {
             boolean reserveRoom=roomService.reserveRoom(room);
             if(reserveRoom) {
                 //预订成功后显示成功页面
+                response.sendRedirect(request.getContextPath()+"/room?method=getReserveRoomList&currentPage=1&currentCount=10");
             }else{
                 //预订失败后显示失败信息
+                System.out.println("1");
             }
         } catch (IllegalAccessException e) {
             e.printStackTrace();

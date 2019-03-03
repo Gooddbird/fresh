@@ -57,6 +57,7 @@
                                 <th>会议室</th>
                                 <th>容量</th>
                                 <th>状态</th>
+                                <th>预订人</th>
                                 <th width="120">操作</th>
                             </tr>
                             </thead>
@@ -74,9 +75,10 @@
                                     <c:if test="${room.station==2}" >
                                         <td>使用中</td>
                                     </c:if>
+                                    <td>${room.reserver}</td>
                                     <td>
                                             <%--<a href="">详情</a>--%>
-                                        <a href="${pageContext.request.contextPath}/room-reserve.jsp&r_id=${room.r_id}                                                                                                                                    ">预订</a>
+                                        <a href="${pageContext.request.contextPath}/room-reserve.jsp?r_id=${room.r_id}&r_station=${room.station}&reserver=${room.reserver}">预订</a>                                                                                                                                   
                                         <a href="${pageContext.request.contextPath}/room-update.jsp?r_id=${room.r_id}&r_name=${room.r_name}&content=${room.content}&station=${room.station}&reserver=${room.reserver}">修改</a>
                                     </td>
                                 </tr>
