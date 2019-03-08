@@ -17,6 +17,7 @@ import java.util.Map;
 @WebServlet(name = "UserServlet",urlPatterns = "/user")
 public class UserServlet extends BaseServlet {
 
+
     public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String u_name = request.getParameter("u_name");
         String u_password = request.getParameter("u_password");
@@ -198,7 +199,19 @@ public class UserServlet extends BaseServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+    }
+    public void getUserDetials(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        // 1 调用service中的查询方法
+        User user = (User) request.getSession().getAttribute("user");
+        if (user!=null){
+            request.setAttribute("user",user);
+            response.sendRedirect(request.getContextPath()+"/user-detials.jsp");
+            System.out.println(user.getName());
+        }else {
+            // 失败了直接提示
+            response.setContentType("text/html;charset=utf-8");
+            response.getWriter().write("失败");
+        }
     }
 
 }

@@ -99,7 +99,7 @@
                     <ul class="pagination pull-right">
                         <li  class="previous"><a href="#">&laquo;</a></li>
                         <c:forEach begin="1" end="${page.totalPage}" var="Page">
-                            <li><a href="${pageContext.request.contextPath}/room?method=getRoomList&roomPage=${Page}&currentCount=10">${Page}</a></li>
+                            <li><a href="${pageContext.request.contextPath}/room?method=getRoomList&currentPage=${Page}&currentCount=10">${Page}</a></li>
                         </c:forEach>
                         <li><a href="#">&raquo;</a></li>
                     </ul>

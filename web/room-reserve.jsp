@@ -14,6 +14,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>form</title>
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/DateTimePicker.css" />
+    <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="static/js/DateTimePicker.js"></script>
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="static/css/DateTimePicker-ltie9.css" />
+    <script type="text/javascript" src="static/js/DateTimePicker-ltie9.js"></script>
+    <![endif]-->
     <style type="text/css">
         body{ font-family: 'Microsoft YaHei';}
         /*.panel-body{ padding: 0; }*/
@@ -55,33 +62,34 @@
                     <div class="panel-body">
                         <form action="room" method="post" class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">您的ID</label>
+                                <label class="col-sm-2 control-label">会议室</label>
                                 <input hidden name="method" value="reserveRoom">
                                 <div class="col-sm-5">
-                                    <input type="text" name="reserver" value="${param.reserver}" class="form-control" placeholder="ID" >
+                                    <input type="text" name="r_id" value="${param.r_id}"  class="form-control" readonly>
                                 </div>
-                                <input type="hidden" name="r_id" value="${param.r_id}">
                                 <div class="col-sm-5">
-                                    <p class="form-control-static text-danger">ID不能为空</p>
+                                    <p class="form-control-static text-danger"></p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">类别</label>
+                                <label class="col-sm-2 control-label">开始时间</label>
                                 <div class="col-sm-5">
-                                    <label class="radio-inline">
-                                        <input <c:if test="${param.station==0}">checked="checked"</c:if> type="radio" name="station" value="0">空闲
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input <c:if test="${param.station==1}">checked="checked"</c:if> type="radio" name="station" value="1">预定中
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input <c:if test="${param.station==2}">checked="checked"</c:if> type="radio" name="station" value="2">使用中
-                                    </label>
+                                    <input type="text" name="startTime"  data-field="datetime" class="form-control" readonly>
                                 </div>
-                                <div class="col-sm-5">
-                                    <p class="form-control-static text-danger">请选择当前状态</p>
+                                <div class="col-sm-5" id="dtBox1">
+                                    <p class="form-control-static text-danger"></p>
                                 </div>
                             </div>
+                            <div class="form-group" >
+                                <label class="col-sm-2 control-label">结束时间</label>
+                                <div class="col-sm-5">
+                                    <input type="text" name="endTime" data-field="datetime" class="form-control" readonly>
+                                </div>
+                                <div class="col-sm-5" id="dtBox2">
+                                    <p class="form-control-static text-danger"></p>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary">提交</button>
@@ -97,14 +105,21 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+
+    $(document).ready(function()
+    {
+        $("#dtBox1").DateTimePicker();
+        $("#dtBox2").DateTimePicker();
+    });
+
+</script>
 <!-- 尾部 -->
 <div class="jumbotron" style=" margin-bottom:0;margin-top:105px;">
     <div class="container">
         <span></span>
     </div>
 </div>
-
-<script src="static/js/jquery-3.1.0.min.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
 <%
     System.out.println(response.getStatus()+"--------------status");

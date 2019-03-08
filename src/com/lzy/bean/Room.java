@@ -6,6 +6,8 @@ public class Room {
     private int content;
     private int station;
     private int reserver;
+    private String startTime;
+    private String endTime;
 
     public int getR_id() {
         return r_id;
@@ -44,5 +46,20 @@ public class Room {
 
     public void setReserver(int reserver) {
         this.reserver = reserver;
+    }
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 }

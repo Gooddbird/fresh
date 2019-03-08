@@ -67,8 +67,8 @@ public class RoomDao {
     public boolean reserveRoom(Room room) throws SQLException  {
         ComboPooledDataSource dataSource=new ComboPooledDataSource();
         QueryRunner queryRunner=new QueryRunner(dataSource);
-        String sql="update room set station=?,reserver=? where r_id=?";
-        int row = queryRunner.update(sql, room.getStation(),room.getReserver(),room.getR_id());
+        String sql="update room set station=?,reserver=?,startTime=?,endTime=? where r_id=?";
+        int row = queryRunner.update(sql, 1,room.getReserver(),room.getStartTime(),room.getEndTime(),room.getR_id());
         if (row>0){
             return true;
         }else {

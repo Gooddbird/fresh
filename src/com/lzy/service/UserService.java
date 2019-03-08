@@ -1,6 +1,7 @@
 package com.lzy.service;
 
 import com.lzy.bean.Page;
+import com.lzy.bean.Room;
 import com.lzy.dao.UserDao;
 import com.lzy.bean.User;
 

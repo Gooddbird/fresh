@@ -2,6 +2,7 @@ package com.lzy.web;
 
 import com.lzy.bean.Page;
 import com.lzy.bean.Room;
+import com.lzy.bean.User;
 import com.lzy.service.RoomService;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -157,6 +158,8 @@ public class RoomServlet extends BaseServlet {
             Map<String, String[]> parameterMap = request.getParameterMap();
             Room room=new Room();
             BeanUtils.populate(room,parameterMap);
+            User user = (User)request.getSession().getAttribute("user");
+            room.setReserver(user.getId());
             RoomService roomService=new RoomService();
             boolean reserveRoom=roomService.reserveRoom(room);
             if(reserveRoom) {
@@ -164,7 +167,7 @@ public class RoomServlet extends BaseServlet {
                 response.sendRedirect(request.getContextPath()+"/room?method=getReserveRoomList&currentPage=1&currentCount=10");
             }else{
                 //预订失败后显示失败信息
-                System.out.println("1");
+                System.out.println(room.getR_id()+room.getStartTime());
             }
         } catch (IllegalAccessException e) {
             e.printStackTrace();

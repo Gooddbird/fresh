@@ -8,6 +8,7 @@ public class User {
     private String email;
     private int sex;
     private String face;
+    private int currentRoom;
 
     public int getId() {
         return id;
@@ -54,5 +55,12 @@ public class User {
 
     public void setFace(String face) {
         this.face = face;
+    }
+    public int getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void setCurrentRoom(int currentRoom) {
+        this.currentRoom = currentRoom;
     }
 }

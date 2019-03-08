@@ -32,7 +32,8 @@
             <!-- 左侧内容 -->
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="${pageContext.request.contextPath}/room?method=getRoomList&currentPage=1&currentCount=10" class="list-group-item text-center active">会议室列表</a>
+                    <a href="${pageContext.request.contextPath}/room?method=getReserveRoomList&currentPage=1&currentCount=10" class="list-group-item text-center active">会议室列表</a>
+                    <a href="${pageContext.request.contextPath}/user?method=getUserDetials" class="list-group-item text-center ">我的信息</a>
                 </div>
             </div>
             <!-- 右侧内容 -->
@@ -77,9 +78,10 @@
                                     </c:if>
                                     <td>${room.reserver}</td>
                                     <td>
-                                            <%--<a href="">详情</a>--%>
-                                        <a href="${pageContext.request.contextPath}/room-reserve.jsp?r_id=${room.r_id}&r_station=${room.station}&reserver=${room.reserver}">预订</a>                                                                                                                                   
-                                        <a href="${pageContext.request.contextPath}/room-update.jsp?r_id=${room.r_id}&r_name=${room.r_name}&content=${room.content}&station=${room.station}&reserver=${room.reserver}">修改</a>
+                                        <c:if test="${room.reserver==0}">
+                                            <a href="${pageContext.request.contextPath}/room-reserve.jsp?r_id=${room.r_id}&r_station=${room.station}&reserver=${room.reserver}">预订</a>
+                                        </c:if>
+                                        <a href="${pageContext.request.contextPath}/room-update.jsp?r_id=${room.r_id}&r_name=${room.r_name}&content=${room.content}&station=${room.station}&reserver=${room.reserver}">详情</a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -92,11 +94,11 @@
 
                 <nav>
                     <ul class="pagination pull-right">
-                        <li  class="previous"><a href="#">&laquo;</a></li>
+                        <li  class="previous"><a href="${pageContext.request.contextPath}/room?method=getReserveRoomList&currentPage=1&currentCount=10">&laquo;</a></li>
                         <c:forEach begin="1" end="${page.totalPage}" var="Page">
-                            <li><a href="${pageContext.request.contextPath}/room?method=getReserveRoomList&roomPage=${Page}&currentCount=10">${Page}</a></li>
+                            <li><a href="${pageContext.request.contextPath}/room?method=getReserveRoomList&currentPage=${Page}&currentCount=10">${Page}</a></li>
                         </c:forEach>
-                        <li><a href="#">&raquo;</a></li>
+                        <li><a href="${pageContext.request.contextPath}/room?method=getReserveRoomList&currentPage=${page.totalPage}&currentCount=10">&raquo;</a></li>
                     </ul>
 
                 </nav>
