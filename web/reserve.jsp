@@ -34,6 +34,8 @@
                 <div class="list-group">
                     <a href="${pageContext.request.contextPath}/room?method=getReserveRoomList&currentPage=1&currentCount=10" class="list-group-item text-center active">会议室列表</a>
                     <a href="${pageContext.request.contextPath}/user?method=getUserDetials" class="list-group-item text-center ">我的信息</a>
+                    <a href="${pageContext.request.contextPath}/room?method=findOrderList&currentPage=1&currentCount=5" class="list-group-item text-center ">我的订单</a>
+
                 </div>
             </div>
             <!-- 右侧内容 -->

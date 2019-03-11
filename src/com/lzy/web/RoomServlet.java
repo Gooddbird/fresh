@@ -178,4 +178,33 @@ public class RoomServlet extends BaseServlet {
         }
 
     }
+    public void findOrderList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        try {
+            int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+            int currentCount = Integer.parseInt(request.getParameter("currentCount"));
+
+            // 给分页数据设置默认值
+            if (currentCount == 0) {
+                currentCount = 5;
+            }
+            if (currentPage == 0) {
+                currentPage = 1;
+            }
+            RoomService service = new RoomService();
+            User user = (User)request.getSession().getAttribute("user");
+            int reserver=user.getId();
+            Page page = service.findPageOrder(currentPage, currentCount,reserver);
+            if (page != null) {
+                request.setAttribute("page", page);
+
+                request.getRequestDispatcher("/order.jsp").forward(request, response);
+
+            } else {
+                request.getRequestDispatcher("/room-list.jsp").forward(request, response);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

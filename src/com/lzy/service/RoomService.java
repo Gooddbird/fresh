@@ -59,4 +59,27 @@ public class RoomService {
         boolean reserveRoom=roomDao.reserveRoom(room);
         return reserveRoom;
     }
+
+    public Page findPageOrder(int currentPage, int currentCount,int reserver) throws SQLException {
+        Page page=new Page();
+        // 1 查询出会议室的总数
+        RoomDao dao = new RoomDao();
+        int totalCount = dao.queryReserveRoomCount(reserver);
+
+        // 2 根据总数和当前页显示数 计算出总页数
+        int totalPage= (int) Math.ceil(1.0*totalCount/currentCount);
+        //3 将分页相关信息封装到page类中
+        page.setCurrentCount(currentCount);
+        page.setCurrentPage(currentPage);
+        page.setTotalCount(totalCount);
+        page.setTotalPage(totalPage);
+
+        int startPosition=(currentPage-1)*currentCount;
+        // 分页查询数据
+        List<Room> rooms = dao.queryPageReserveRoomList(startPosition,currentCount,reserver);
+        // 将集合数据封装到page类中
+        page.setList(rooms);
+
+        return page;
+    }
 }

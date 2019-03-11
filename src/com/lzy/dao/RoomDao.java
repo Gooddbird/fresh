@@ -75,4 +75,19 @@ public class RoomDao {
             return false;
         }
     }
+
+    public int queryReserveRoomCount(int reserver) throws SQLException {
+        ComboPooledDataSource dataSource=new ComboPooledDataSource();
+        QueryRunner queryRunner=new QueryRunner(dataSource);
+        String sql="select count(*) from room where reserver=?";
+        Long query = queryRunner.query(sql, new ScalarHandler<>(),reserver);
+        return query.intValue();
+    }
+    public List<Room> queryPageReserveRoomList(int startPosition, int currentCount,int reserver) throws SQLException {
+        ComboPooledDataSource dataSource=new ComboPooledDataSource();
+        QueryRunner queryRunner=new QueryRunner(dataSource);
+        String sql="select * from room where reserver=? limit ?,? ";
+        List<Room> roomList = queryRunner.query(sql, new BeanListHandler<Room>(Room.class),reserver,startPosition,currentCount);
+        return roomList;
+    }
 }
